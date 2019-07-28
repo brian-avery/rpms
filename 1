@@ -1,0 +1,1735 @@
+rm: cannot remove '*.tar.xz': No such file or directory
+rm: cannot remove '*.src.rpm': No such file or directory
+DIR=/tmp/istio-proxy/bazel
+++ set_default_envs
+++ '[' -z '' ']'
+++ PROXY_GIT_REPO=https://github.com/maistra/proxy
+++ '[' -z '' ']'
+++ OPENSSL_GIT_BRANCH=maistra-1.0
+++ '[' -z '' ']'
+++ PROXY_GIT_BRANCH=maistra-1.0
+++ '[' -z '' ']'
+++ CLEAN_FETCH=true
+++ '[' -z '' ']'
+++ FETCH_ONLY=false
+++ '[' -z true ']'
+++ '[' -z '' ']'
+++ DEBUG_FETCH=false
+++ '[' -z '' ']'
+++ CREATE_ARTIFACTS=false
+++ '[' -z '' ']'
++++ pwd
+++ RPM_SOURCE_DIR=/home/bavery/code/maistra-brewmultiprod/source/git/rpms/istio-proxy
+++ '[' -z '' ']'
+++ FETCH_OR_BUILD=fetch
+++ '[' -z '' ']'
++++ date +%s
+++ BUILD_SCM_REVISION=1564283688
+++ '[' -z '' ']'
+++ STRIP_LATOMIC=true
+++ '[' -z '' ']'
+++ REPLACE_SSL=true
+++ source /home/bavery/code/maistra-brewmultiprod/source/git/rpms/istio-proxy/common.sh
++++ set -x
++++ set -e
++++ '[' -z '' ']'
++++ BAZEL_VERSION=0.22.0
+++ check_dependencies
++++ bazel version
+Extracting Bazel installation...
+WARNING: --batch mode is deprecated. Please instead explicitly shut down your Bazel server using the command "bazel shutdown".
+INFO: Invocation ID: a351780a-5de4-46e5-80be-ae0f22ccd255
+++ RESULT='Build label: 0.22.0
+Build target: bazel-out/k8-opt/bin/src/main/java/com/google/devtools/build/lib/bazel/BazelServer_deploy.jar
+Build time: Mon Jan 28 12:58:08 2019 (1548680288)
+Build timestamp: 1548680288
+Build timestamp as int: 1548680288'
+++ rm -rf /home/bavery/.cache/bazel
+++ [[ Build label: 0.22.0
+Build target: bazel-out/k8-opt/bin/src/main/java/com/google/devtools/build/lib/bazel/BazelServer_deploy.jar
+Build time: Mon Jan 28 12:58:08 2019 (1548680288)
+Build timestamp: 1548680288
+Build timestamp as int: 1548680288 != *\0\.\2\2\.\0* ]]
+++ preprocess_envs
+++ '[' true == true ']'
+++ rm -rf /tmp/istio-proxy
+++ fetch
+++ '[' '!' -d /tmp/istio-proxy ']'
+++ mkdir -p /tmp/istio-proxy
+++ pushd /tmp/istio-proxy
+++ git clone https://github.com/maistra/proxy
+Cloning into 'proxy'...
+++ pushd /tmp/istio-proxy/proxy
+++ git checkout maistra-1.0
+Already on 'maistra-1.0'
++++ git rev-parse --verify HEAD
+++ SHA=300a927e82a9d952889b8f4de1e0889d4e20e07d
+++ popd
+++ use_local_go
+++ pushd /tmp/istio-proxy/proxy
+++ sed -i 's|go_register_toolchains(go_version = GO_VERSION)|go_register_toolchains(go_version="host")|g' WORKSPACE
+++ popd
+++ copy_bazel_build_status
+++ cp -f /home/bavery/code/maistra-brewmultiprod/source/git/rpms/istio-proxy/bazel_get_workspace_status /tmp/istio-proxy/proxy/tools/bazel_get_workspace_status
+++ bazel_dir=bazel
+++ '[' false == true ']'
+++ '[' '!' -d bazel ']'
+++ set_path
+++ '[' '!' -f /home/bavery/python ']'
+++ export PATH=/home/bavery/bin:/usr/local/go/bin:/home/bavery/go/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/bavery/bin:/var/lib/snapd/snap/bin:/home/bavery/bin:/home/bavery/bin:/usr/local/bin:/home/bavery
+++ PATH=/home/bavery/bin:/usr/local/go/bin:/home/bavery/go/bin:/usr/share/Modules/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/bavery/bin:/var/lib/snapd/snap/bin:/home/bavery/bin:/home/bavery/bin:/usr/local/bin:/home/bavery
+++ pushd /tmp/istio-proxy/proxy
+++ bazel --output_base=/tmp/istio-proxy/bazel/base --output_user_root=/tmp/istio-proxy/bazel/root fetch //...
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/tmp/istio-proxy/proxy/tools/bazel.rc
+Extracting Bazel installation...
+Starting local Bazel server and connecting to it...
+INFO: Invocation ID: 835ca74e-4c82-4122-ba51-677d4ee278c8
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+DEBUG: /tmp/istio-proxy/bazel/base/external/bazel_tools/tools/build_defs/pkg/pkg.bzl:251:17: @//tools/deb:envoy-bin: you provided a non dictionary to the pkg_tar `files` attribute. This attribute was renamed to `srcs`. Consider renaming it in your BUILD file.
+DEBUG: /tmp/istio-proxy/bazel/base/external/bazel_tools/tools/build_defs/pkg/pkg.bzl:251:17: @//tools/deb:istio-conf: you provided a non dictionary to the pkg_tar `files` attribute. This attribute was renamed to `srcs`. Consider renaming it in your BUILD file.
+Loading: 17 packages loaded
+    currently loading: src/envoy/http/jwt_auth ... (11 packages)
+Loading: 17 packages loaded
+    currently loading: src/envoy/http/jwt_auth ... (11 packages)
+DEBUG: /tmp/istio-proxy/bazel/base/external/bazel_tools/tools/build_defs/pkg/pkg.bzl:251:17: @//src/envoy:envoy_tar: you provided a non dictionary to the pkg_tar `files` attribute. This attribute was renamed to `srcs`. Consider renaming it in your BUILD file.
+Loading: 28 packages loaded
+Loading: 30 packages loaded
+Loading: 32 packages loaded
+Loading: 67 packages loaded
+    currently loading: @bazel_tools//tools/cpp
+INFO: SHA256 (https://codeload.github.com/golang/tools/zip/bf090417da8b6150dcfe96795325f5aa78fff718) = 11629171a39a1cb4d426760005be6f7cb9b4182e4cb2756b7f1c5c2b6ae869fe
+Loading: 144 packages loaded
+    currently loading: @bazel_tools//tools/cpp ... (3 packages)
+DEBUG: Rule 'org_golang_x_tools' modified arguments {"sha256": "11629171a39a1cb4d426760005be6f7cb9b4182e4cb2756b7f1c5c2b6ae869fe"}
+Loading: 199 packages loaded
+    currently loading: @bazel_tools//src/tools/singlejar
+Loading: 206 packages loaded
+Loading: 288 packages loaded
+Loading: 418 packages loaded
+Loading: 424 packages loaded
+Loading: 426 packages loaded
+Loading: 426 packages loaded
+Loading: 427 packages loaded
+Loading: 427 packages loaded
+++ popd
+++ '[' false == true ']'
+++ '[' false = true ']'
+++ '[' false == true ']'
+++ popd
+++ patch_class_memaccess
+++ pushd /tmp/istio-proxy/proxy
+++ echo 'build --cxxopt -Wno-error=class-memaccess'
+++ popd
+++ replace_python
+++ pushd /tmp/istio-proxy/bazel
+++ find . -type f -name rules -exec sed -i 's|/usr/bin/python|/usr/bin/python3|g' '{}' +
+++ sed -i 's|/usr/bin/python|/usr/bin/python3|g' base/external/local_config_cc/extra_tools/envoy_cc_wrapper
+++ find base/external -type f -name '*.py' -exec sed -i 's|.iteritems()|.items()|g' '{}' +
+++ find base/external -type f -name '*.yaml' -exec sed -i 's|.iteritems()|.items()|g' '{}' +
+++ popd
+++ set_python_rules_date
+++ pushd /tmp/istio-proxy/bazel
+++ find . -type f -name rules
+++ xargs touch -m -t 210012120101
+++ popd
+++ update_compiler_flags
+++ pushd /tmp/istio-proxy/bazel
+++ sed -i 's|compiler_flag: "-fcolor-diagnostics"|cxx_builtin_include_directory: "/usr/include"|g' base/external/local_config_cc/CROSSTOOL
+++ sed -i 's|compiler_flag: "-Wself-assign"|cxx_builtin_include_directory: "/usr/lib/gcc/x86_64-redhat-linux/8/include"|g' base/external/local_config_cc/CROSSTOOL
+++ sed -i 's|compiler_flag: "-Wthread-safety"||g' base/external/local_config_cc/CROSSTOOL
+++ sed -i 's|\["-static-libstdc++", "-static-libgcc"],||g' base/external/envoy/bazel/envoy_build_system.bzl
+++ popd
+++ prune
+++ pushd /tmp/istio-proxy
+++ '[' '!' false == true ']'
+++ find . -name '.git*'
+++ xargs -r rm -rf
+++ find . -name '*.log'
+++ xargs -r rm -rf
+++ popd
+++ pushd /tmp/istio-proxy/bazel
+++ rm -rf base/execroot
+++ rm -rf root/cache
+++ popd
+++ remove_build_artifacts
+++ rm -rf 'proxy/bazel-*'
+++ rm -rf 'bazel/base/external/envoy_deps_cache_*'
+++ add_path_markers
+++ pushd /tmp/istio-proxy
+++ sed -i 's|/tmp/istio-proxy/bazel|BUILD_PATH_MARKER/bazel|' ./bazel/base/external/local_config_cc/cc_wrapper.sh
+++ sed -i 's|/tmp/istio-proxy/bazel|BUILD_PATH_MARKER/bazel|' ./bazel/base/external/local_config_cc/CROSSTOOL
+++ popd
+++ replace_ssl
+++ '[' true = true ']'
+++ pushd /tmp/istio-proxy/proxy
+++ git clone http://github.com/maistra/istio-proxy-openssl -b maistra-1.0
+Cloning into 'istio-proxy-openssl'...
+warning: redirecting to https://github.com/maistra/istio-proxy-openssl/
+++ pushd istio-proxy-openssl
+++ ./openssl.sh /tmp/istio-proxy/proxy OPENSSL
++++ SOURCE_DIR=/tmp/istio-proxy/proxy
++++ TARGET=OPENSSL
++++ '[' '' == true ']'
++++ '[' OPENSSL == RESET ']'
++++ BUILD_OPTIONS='
+build --cxxopt -D_GLIBCXX_USE_CXX11_ABI=1
+build --cxxopt -DENVOY_IGNORE_GLIBCXX_USE_CXX11_ABI_ERROR=1
+build --cxxopt -D_FORTIFY_SOURCE=2
+build --cxxopt -Wno-error=deprecated-declarations
+build --cxxopt -Wno-error=unused-variable
+build --cxxopt -w
+build --cxxopt -ldl
+'
++++ echo '
+build --cxxopt -D_GLIBCXX_USE_CXX11_ABI=1
+build --cxxopt -DENVOY_IGNORE_GLIBCXX_USE_CXX11_ABI_ERROR=1
+build --cxxopt -D_FORTIFY_SOURCE=2
+build --cxxopt -Wno-error=deprecated-declarations
+build --cxxopt -Wno-error=unused-variable
+build --cxxopt -w
+build --cxxopt -ldl
+'
++++ '[' OPENSSL == BORINGSSL ']'
++++ /usr/bin/cp external_tests.sh /tmp/istio-proxy/proxy
++++ /usr/bin/cp bazelignore /tmp/istio-proxy/proxy/.bazelignore
++++ /usr/bin/cp -rf src/envoy/tcp/sni_verifier/openssl_impl.cc src/envoy/tcp/sni_verifier/openssl_impl.h src/envoy/tcp/sni_verifier/sni_verifier.cc src/envoy/tcp/sni_verifier/sni_verifier.h src/envoy/tcp/sni_verifier/sni_verifier_test.cc /tmp/istio-proxy/proxy/src/envoy/tcp/sni_verifier/
++++ cp openssl.BUILD /tmp/istio-proxy/proxy
++++ FILE=WORKSPACE
++++ DELETE_START_PATTERN=bind
++++ DELETE_STOP_PATTERN=')'
++++ START_OFFSET=0
++++ ADD_TEXT='new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)
+'
++++ replace_text
+++++ grep -nr bind /tmp/istio-proxy/proxy/WORKSPACE
+++++ cut -d: -f1
++++ START=30
++++ START=30
++++ [[ ! -z ) ]]
+++++ tail --lines=+30 /tmp/istio-proxy/proxy/WORKSPACE
+++++ grep -nr ')' -
+++++ head -1
+++++ cut -d: -f1
++++ STOP=4
++++ CUT=33
+++++ sed -n '30,33 p' /tmp/istio-proxy/proxy/WORKSPACE
++++ CUT_TEXT='bind(
+    name = "boringssl_crypto",
+    actual = "//external:ssl",
+)'
++++ sed -i '30,33 d' /tmp/istio-proxy/proxy/WORKSPACE
++++ [[ ! -z new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)
+ ]]
++++ ex -s -c '30i|new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)
+' -c x /tmp/istio-proxy/proxy/WORKSPACE
++++ OPENSSL_LIB='
+envoy_cc_library(
+    name = "openssl_impl_lib",
+    srcs = [
+        "openssl_impl.cc",
+    ],
+    hdrs = [
+        "openssl_impl.h",
+    ],
+    external_deps = [
+        "ssl",
+        "bssl_wrapper_lib",
+    ],
+    repository = "@envoy",
+)
+'
++++ echo '
+envoy_cc_library(
+    name = "openssl_impl_lib",
+    srcs = [
+        "openssl_impl.cc",
+    ],
+    hdrs = [
+        "openssl_impl.h",
+    ],
+    external_deps = [
+        "ssl",
+        "bssl_wrapper_lib",
+    ],
+    repository = "@envoy",
+)
+'
++++ FILE=src/envoy/tcp/sni_verifier/BUILD
++++ DELETE_START_PATTERN=sni_verifier.h
++++ DELETE_STOP_PATTERN=@envoy//source/exe:envoy_common_lib
++++ START_OFFSET=4
++++ ADD_TEXT='        ":openssl_impl_lib",
+        "@envoy//source/exe:envoy_common_lib",'
++++ replace_text
+++++ grep -nr sni_verifier.h /tmp/istio-proxy/proxy/src/envoy/tcp/sni_verifier/BUILD
+++++ cut -d: -f1
++++ START=39
++++ START=43
++++ [[ ! -z @envoy//source/exe:envoy_common_lib ]]
+++++ tail --lines=+43 /tmp/istio-proxy/proxy/src/envoy/tcp/sni_verifier/BUILD
+++++ grep -nr @envoy//source/exe:envoy_common_lib -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=1
++++ CUT=43
+++++ sed -n '43,43 p' /tmp/istio-proxy/proxy/src/envoy/tcp/sni_verifier/BUILD
++++ CUT_TEXT='        "@envoy//source/exe:envoy_common_lib",'
++++ sed -i '43,43 d' /tmp/istio-proxy/proxy/src/envoy/tcp/sni_verifier/BUILD
++++ [[ ! -z         ":openssl_impl_lib",
+        "@envoy//source/exe:envoy_common_lib", ]]
++++ ex -s -c '43i|        ":openssl_impl_lib",
+        "@envoy//source/exe:envoy_common_lib",' -c x /tmp/istio-proxy/proxy/src/envoy/tcp/sni_verifier/BUILD
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN=RSA_public_key_from_bytes
++++ DELETE_STOP_PATTERN='return EvpPkeyFromRsa'
++++ START_OFFSET=-1
++++ ADD_TEXT='    RSA* rsa(RSA_new());
+    const unsigned char *pp = (const unsigned char *)pkey_der.c_str();
+    d2i_RSAPublicKey(&rsa, &pp, pkey_der.length());
+    if (!rsa) {
+      UpdateStatus(Status::PEM_PUBKEY_PARSE_ERROR);
+    }
+    bssl::UniquePtr<EVP_PKEY> result = EvpPkeyFromRsa(rsa);
+
+    RSA_free(rsa);
+
+    return result;'
++++ replace_text
+++++ grep -nr RSA_public_key_from_bytes /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=167
++++ START=166
++++ [[ ! -z return EvpPkeyFromRsa ]]
+++++ tail --lines=+166 /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
+++++ head -1
+++++ grep -nr 'return EvpPkeyFromRsa' -
++++ STOP=6
++++ CUT=171
+++++ sed -n '166,171 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    auto rsa = bssl::UniquePtr<RSA>(
+        RSA_public_key_from_bytes(CastToUChar(pkey_der), pkey_der.length()));
+    if (!rsa) {
+      UpdateStatus(Status::PEM_PUBKEY_PARSE_ERROR);
+    }
+    return EvpPkeyFromRsa(rsa.get());'
++++ sed -i '166,171 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z     RSA* rsa(RSA_new());
+    const unsigned char *pp = (const unsigned char *)pkey_der.c_str();
+    d2i_RSAPublicKey(&rsa, &pp, pkey_der.length());
+    if (!rsa) {
+      UpdateStatus(Status::PEM_PUBKEY_PARSE_ERROR);
+    }
+    bssl::UniquePtr<EVP_PKEY> result = EvpPkeyFromRsa(rsa);
+
+    RSA_free(rsa);
+
+    return result; ]]
++++ ex -s -c '166i|    RSA* rsa(RSA_new());
+    const unsigned char *pp = (const unsigned char *)pkey_der.c_str();
+    d2i_RSAPublicKey(&rsa, &pp, pkey_der.length());
+    if (!rsa) {
+      UpdateStatus(Status::PEM_PUBKEY_PARSE_ERROR);
+    }
+    bssl::UniquePtr<EVP_PKEY> result = EvpPkeyFromRsa(rsa);
+
+    RSA_free(rsa);
+
+    return result;' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='bssl::UniquePtr<BIGNUM> bn_x = BigNumFromBase64UrlString(x);'
++++ DELETE_STOP_PATTERN='bssl::UniquePtr<BIGNUM> bn_y = BigNumFromBase64UrlString(y);'
++++ START_OFFSET=0
++++ ADD_TEXT='    BIGNUM* bn_x = BigNumFromBase64UrlString(x);
+    BIGNUM* bn_y = BigNumFromBase64UrlString(y);'
++++ replace_text
+++++ grep -nr 'bssl::UniquePtr<BIGNUM> bn_x = BigNumFromBase64UrlString(x);' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=192
++++ START=192
++++ [[ ! -z bssl::UniquePtr<BIGNUM> bn_y = BigNumFromBase64UrlString(y); ]]
+++++ tail --lines=+192 /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ grep -nr 'bssl::UniquePtr<BIGNUM> bn_y = BigNumFromBase64UrlString(y);' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=193
+++++ sed -n '192,193 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    bssl::UniquePtr<BIGNUM> bn_x = BigNumFromBase64UrlString(x);
+    bssl::UniquePtr<BIGNUM> bn_y = BigNumFromBase64UrlString(y);'
++++ sed -i '192,193 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z     BIGNUM* bn_x = BigNumFromBase64UrlString(x);
+    BIGNUM* bn_y = BigNumFromBase64UrlString(y); ]]
++++ ex -s -c '192i|    BIGNUM* bn_x = BigNumFromBase64UrlString(x);
+    BIGNUM* bn_y = BigNumFromBase64UrlString(y);' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='if (EC_KEY_set_public_key_affine_coordinates(ec_key.get(), bn_x.get(),'
++++ DELETE_STOP_PATTERN='return ec_key;'
++++ START_OFFSET=0
++++ ADD_TEXT='    if (EC_KEY_set_public_key_affine_coordinates(ec_key.get(), bn_x,
+                                                 bn_y) == 0) {
+      BN_free(bn_x);
+      BN_free(bn_y);
+
+      UpdateStatus(Status::JWK_EC_PUBKEY_PARSE_ERROR);
+      return nullptr;
+    }
+
+    BN_free(bn_x);
+    BN_free(bn_y);
+
+    return ec_key;'
++++ replace_text
+++++ grep -nr 'if (EC_KEY_set_public_key_affine_coordinates(ec_key.get(), bn_x.get(),' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=200
++++ START=200
++++ [[ ! -z return ec_key; ]]
+++++ tail --lines=+200 /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ grep -nr 'return ec_key;' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=6
++++ CUT=205
+++++ sed -n '200,205 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    if (EC_KEY_set_public_key_affine_coordinates(ec_key.get(), bn_x.get(),
+                                                 bn_y.get()) == 0) {
+      UpdateStatus(Status::JWK_EC_PUBKEY_PARSE_ERROR);
+      return nullptr;
+    }
+    return ec_key;'
++++ sed -i '200,205 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z     if (EC_KEY_set_public_key_affine_coordinates(ec_key.get(), bn_x,
+                                                 bn_y) == 0) {
+      BN_free(bn_x);
+      BN_free(bn_y);
+
+      UpdateStatus(Status::JWK_EC_PUBKEY_PARSE_ERROR);
+      return nullptr;
+    }
+
+    BN_free(bn_x);
+    BN_free(bn_y);
+
+    return ec_key; ]]
++++ ex -s -c '200i|    if (EC_KEY_set_public_key_affine_coordinates(ec_key.get(), bn_x,
+                                                 bn_y) == 0) {
+      BN_free(bn_x);
+      BN_free(bn_y);
+
+      UpdateStatus(Status::JWK_EC_PUBKEY_PARSE_ERROR);
+      return nullptr;
+    }
+
+    BN_free(bn_x);
+    BN_free(bn_y);
+
+    return ec_key;' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='bssl::UniquePtr<BIGNUM> BigNumFromBase64UrlString(const std::string &s) {'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='  BIGNUM* BigNumFromBase64UrlString(const std::string &s) {'
++++ replace_text
+++++ grep -nr 'bssl::UniquePtr<BIGNUM> BigNumFromBase64UrlString(const std::string &s) {' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=227
++++ START=227
++++ [[ ! -z '' ]]
++++ CUT=227
+++++ sed -n '227,227 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='  bssl::UniquePtr<BIGNUM> BigNumFromBase64UrlString(const std::string &s) {'
++++ sed -i '227,227 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z   BIGNUM* BigNumFromBase64UrlString(const std::string &s) { ]]
++++ ex -s -c '227i|  BIGNUM* BigNumFromBase64UrlString(const std::string &s) {' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='return bssl::UniquePtr<BIGNUM>('
++++ DELETE_STOP_PATTERN='BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL));'
++++ START_OFFSET=0
++++ ADD_TEXT='    return BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL);'
++++ replace_text
+++++ grep -nr 'return bssl::UniquePtr<BIGNUM>(' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=232
++++ START=232
++++ [[ ! -z BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL)); ]]
+++++ tail --lines=+232 /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ grep -nr 'BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL));' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=233
+++++ sed -n '232,233 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    return bssl::UniquePtr<BIGNUM>(
+        BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL));'
++++ sed -i '232,233 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z     return BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL); ]]
++++ ex -s -c '232i|    return BN_bin2bn(CastToUChar(s_decoded), s_decoded.length(), NULL);' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='rsa->n = BigNumFromBase64UrlString(n).release();'
++++ DELETE_STOP_PATTERN='rsa->e = BigNumFromBase64UrlString(e).release();'
++++ START_OFFSET=0
++++ ADD_TEXT='    BIGNUM* rsa_n = BigNumFromBase64UrlString(n);
+    BIGNUM* rsa_e = BigNumFromBase64UrlString(e);'
++++ replace_text
+++++ grep -nr 'rsa->n = BigNumFromBase64UrlString(n).release();' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=240
++++ START=240
++++ [[ ! -z rsa->e = BigNumFromBase64UrlString(e).release(); ]]
+++++ tail --lines=+240 /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ grep -nr 'rsa->e = BigNumFromBase64UrlString(e).release();' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=241
+++++ sed -n '240,241 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    rsa->n = BigNumFromBase64UrlString(n).release();
+    rsa->e = BigNumFromBase64UrlString(e).release();'
++++ sed -i '240,241 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z     BIGNUM* rsa_n = BigNumFromBase64UrlString(n);
+    BIGNUM* rsa_e = BigNumFromBase64UrlString(e); ]]
++++ ex -s -c '240i|    BIGNUM* rsa_n = BigNumFromBase64UrlString(n);
+    BIGNUM* rsa_e = BigNumFromBase64UrlString(e);' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='if (!rsa->n || !rsa->e) {'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='if (!rsa_n || !rsa_e) {'
++++ replace_text
+++++ grep -nr 'if (!rsa->n || !rsa->e) {' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=242
++++ START=242
++++ [[ ! -z '' ]]
++++ CUT=242
+++++ sed -n '242,242 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    if (!rsa->n || !rsa->e) {'
++++ sed -i '242,242 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z if (!rsa_n || !rsa_e) { ]]
++++ ex -s -c '242i|if (!rsa_n || !rsa_e) {' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='return rsa;'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='    int result = RSA_set0_key(rsa.get(), rsa_n, rsa_e, nullptr);
+
+    return rsa;'
++++ replace_text
+++++ grep -nr 'return rsa;' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=247
++++ START=247
++++ [[ ! -z '' ]]
++++ CUT=247
+++++ sed -n '247,247 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='    return rsa;'
++++ sed -i '247,247 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z     int result = RSA_set0_key(rsa.get(), rsa_n, rsa_e, nullptr);
+
+    return rsa; ]]
++++ ex -s -c '247i|    int result = RSA_set0_key(rsa.get(), rsa_n, rsa_e, nullptr);
+
+    return rsa;' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.cc
++++ DELETE_START_PATTERN='BN_bin2bn(signature, 32, ecdsa_sig->r);'
++++ DELETE_STOP_PATTERN='return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) =='
++++ START_OFFSET=0
++++ ADD_TEXT='  BIGNUM* pr(BN_new());
+  BIGNUM* ps(BN_new());
+  BN_bin2bn(signature, 32, pr);
+  BN_bin2bn(signature + 32, 32, ps);
+  ECDSA_SIG_set0(ecdsa_sig.get(), pr, ps);
+
+  return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) =='
++++ replace_text
+++++ grep -nr 'BN_bin2bn(signature, 32, ecdsa_sig->r);' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ cut -d: -f1
++++ START=379
++++ START=379
++++ [[ ! -z return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) == ]]
+++++ tail --lines=+379 /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
+++++ grep -nr 'return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) ==' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=3
++++ CUT=381
+++++ sed -n '379,381 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ CUT_TEXT='  BN_bin2bn(signature, 32, ecdsa_sig->r);
+  BN_bin2bn(signature + 32, 32, ecdsa_sig->s);
+  return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) =='
++++ sed -i '379,381 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ [[ ! -z   BIGNUM* pr(BN_new());
+  BIGNUM* ps(BN_new());
+  BN_bin2bn(signature, 32, pr);
+  BN_bin2bn(signature + 32, 32, ps);
+  ECDSA_SIG_set0(ecdsa_sig.get(), pr, ps);
+
+  return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) == ]]
++++ ex -s -c '379i|  BIGNUM* pr(BN_new());
+  BIGNUM* ps(BN_new());
+  BN_bin2bn(signature, 32, pr);
+  BN_bin2bn(signature + 32, 32, ps);
+  ECDSA_SIG_set0(ecdsa_sig.get(), pr, ps);
+
+  return (ECDSA_do_verify(digest, SHA256_DIGEST_LENGTH, ecdsa_sig.get(), key) ==' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.cc
++++ FILE=src/envoy/http/jwt_auth/jwt.h
++++ DELETE_START_PATTERN='#include "openssl/evp.h"'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='#include "openssl/evp.h"
+#include "bssl_wrapper/bssl_wrapper.h"'
++++ replace_text
+++++ grep -nr '#include "openssl/evp.h"' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.h
+++++ cut -d: -f1
++++ START=20
++++ START=20
++++ [[ ! -z '' ]]
++++ CUT=20
+++++ sed -n '20,20 p' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.h
++++ CUT_TEXT='#include "openssl/evp.h"'
++++ sed -i '20,20 d' /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.h
++++ [[ ! -z #include "openssl/evp.h"
+#include "bssl_wrapper/bssl_wrapper.h" ]]
++++ ex -s -c '20i|#include "openssl/evp.h"
+#include "bssl_wrapper/bssl_wrapper.h"' -c x /tmp/istio-proxy/proxy/src/envoy/http/jwt_auth/jwt.h
+++ popd
+++ rm -rf istio-proxy-openssl
+++ git clone http://github.com/maistra/envoy-openssl -b maistra-1.0
+Cloning into 'envoy-openssl'...
+warning: redirecting to https://github.com/maistra/envoy-openssl/
+++ pushd envoy-openssl
+++ ./openssl.sh /tmp/istio-proxy/bazel/base/external/envoy OPENSSL 300a927e82a9d952889b8f4de1e0889d4e20e07d
++++ SOURCE_DIR=/tmp/istio-proxy/bazel/base/external/envoy
++++ TARGET=OPENSSL
++++ PROXY_SHA=300a927e82a9d952889b8f4de1e0889d4e20e07d
++++ '[' '' == true ']'
++++ '[' OPENSSL == RESET ']'
++++ BUILD_OPTIONS='
+build --cxxopt -D_GLIBCXX_USE_CXX11_ABI=1
+build --cxxopt -DENVOY_IGNORE_GLIBCXX_USE_CXX11_ABI_ERROR=1
+build --cxxopt -Wnon-virtual-dtor
+build --cxxopt -Wformat
+build --cxxopt -Wformat-security
+build --cxxopt -Wno-error=deprecated-declarations
+build --cxxopt -Wno-error=unused-variable
+build --cxxopt -w
+build --cxxopt -ldl
+'
++++ echo '
+build --cxxopt -D_GLIBCXX_USE_CXX11_ABI=1
+build --cxxopt -DENVOY_IGNORE_GLIBCXX_USE_CXX11_ABI_ERROR=1
+build --cxxopt -Wnon-virtual-dtor
+build --cxxopt -Wformat
+build --cxxopt -Wformat-security
+build --cxxopt -Wno-error=deprecated-declarations
+build --cxxopt -Wno-error=unused-variable
+build --cxxopt -w
+build --cxxopt -ldl
+'
++++ '[' OPENSSL == BORINGSSL ']'
++++ rm -rf /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/transport_sockets/tls
++++ rm -rf /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/listener/tls_inspector
++++ rm -rf /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/transport_sockets/tls
++++ rm -rf /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/filters/listener/tls_inspector
++++ /usr/bin/cp -rf source/extensions/transport_sockets/tls /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/transport_sockets/
++++ /usr/bin/cp -rf source/extensions/filters/listener/tls_inspector /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/listener/
++++ /usr/bin/cp -rf test/extensions/transport_sockets/tls /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/transport_sockets/
++++ /usr/bin/cp -rf test/extensions/filters/listener/tls_inspector /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/filters/listener/
++++ /usr/bin/cp -rf test/common/network/connection_impl_test.cc test/common/network/socket_option_factory_test.cc /tmp/istio-proxy/bazel/base/external/envoy/test/common/network/
++++ /usr/bin/cp -rf test/integration/BUILD /tmp/istio-proxy/bazel/base/external/envoy/test/integration/
++++ /usr/bin/cp openssl.BUILD /tmp/istio-proxy/bazel/base/external/envoy
++++ FILE=bazel/repository_locations.bzl
++++ DELETE_START_PATTERN='boringssl = dict('
++++ DELETE_STOP_PATTERN='),'
++++ START_OFFSET=0
++++ ADD_TEXT='    #EXTERNAL OPENSSL
+    bssl_wrapper = dict(
+        sha256 = "81a59d013096015a93269325ee4148d826ffd7a9f019f622850a2b86974b9748",
+        strip_prefix = "bssl_wrapper-2eaed8832e12a0fada8f08a5e23522e035b80784",
+        urls = ["https://github.com/maistra/bssl_wrapper/archive/2eaed8832e12a0fada8f08a5e23522e035b80784.tar.gz"],
+    ),
+    #EXTERNAL OPENSSL
+    openssl_cbs = dict(
+        sha256 = "f466ca7bc4b876cfa9edb4870275207e580588f85f8fae268c40277846a6d8de",
+        strip_prefix = "openssl-cbs-dab3282af49f134766abcda5f95cbb19057a53d1",
+        urls = ["https://github.com/maistra/openssl-cbs/archive/dab3282af49f134766abcda5f95cbb19057a53d1.tar.gz"],
+    ),'
++++ replace_text
+++++ grep -nr 'boringssl = dict(' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
+++++ cut -d: -f1
++++ START=6
++++ START=6
++++ [[ ! -z ), ]]
+++++ tail --lines=+6 /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
+++++ grep -nr '),' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=7
++++ CUT=12
+++++ sed -n '6,12 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
++++ CUT_TEXT='    boringssl = dict(
+        # Use commits from branch "chromium-stable-with-bazel"
+        sha256 = "e11d2d62cd6c4e1b2e126500e1436a678574300f33f27974f2c7ef271be42727",
+        strip_prefix = "boringssl-debed9a4d8de5e282f672ffcd7e4a48a201ea78c",
+        # chromium-73.0.3683.75
+        urls = ["https://github.com/google/boringssl/archive/debed9a4d8de5e282f672ffcd7e4a48a201ea78c.tar.gz"],
+    ),'
++++ sed -i '6,12 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
++++ [[ ! -z     #EXTERNAL OPENSSL
+    bssl_wrapper = dict(
+        sha256 = "81a59d013096015a93269325ee4148d826ffd7a9f019f622850a2b86974b9748",
+        strip_prefix = "bssl_wrapper-2eaed8832e12a0fada8f08a5e23522e035b80784",
+        urls = ["https://github.com/maistra/bssl_wrapper/archive/2eaed8832e12a0fada8f08a5e23522e035b80784.tar.gz"],
+    ),
+    #EXTERNAL OPENSSL
+    openssl_cbs = dict(
+        sha256 = "f466ca7bc4b876cfa9edb4870275207e580588f85f8fae268c40277846a6d8de",
+        strip_prefix = "openssl-cbs-dab3282af49f134766abcda5f95cbb19057a53d1",
+        urls = ["https://github.com/maistra/openssl-cbs/archive/dab3282af49f134766abcda5f95cbb19057a53d1.tar.gz"],
+    ), ]]
++++ ex -s -c '6i|    #EXTERNAL OPENSSL
+    bssl_wrapper = dict(
+        sha256 = "81a59d013096015a93269325ee4148d826ffd7a9f019f622850a2b86974b9748",
+        strip_prefix = "bssl_wrapper-2eaed8832e12a0fada8f08a5e23522e035b80784",
+        urls = ["https://github.com/maistra/bssl_wrapper/archive/2eaed8832e12a0fada8f08a5e23522e035b80784.tar.gz"],
+    ),
+    #EXTERNAL OPENSSL
+    openssl_cbs = dict(
+        sha256 = "f466ca7bc4b876cfa9edb4870275207e580588f85f8fae268c40277846a6d8de",
+        strip_prefix = "openssl-cbs-dab3282af49f134766abcda5f95cbb19057a53d1",
+        urls = ["https://github.com/maistra/openssl-cbs/archive/dab3282af49f134766abcda5f95cbb19057a53d1.tar.gz"],
+    ),' -c x /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
++++ FILE=bazel/repository_locations.bzl
++++ DELETE_START_PATTERN='boringssl_fips = dict('
++++ DELETE_STOP_PATTERN='),'
++++ START_OFFSET=0
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr 'boringssl_fips = dict(' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
+++++ cut -d: -f1
++++ START=18
++++ START=18
++++ [[ ! -z ), ]]
+++++ tail --lines=+18 /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
+++++ grep -nr '),' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=5
++++ CUT=22
+++++ sed -n '18,22 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
++++ CUT_TEXT='    boringssl_fips = dict(
+        sha256 = "b12ad676ee533824f698741bd127f6fbc82c46344398a6d78d25e62c6c418c73",
+        # fips-20180730
+        urls = ["https://commondatastorage.googleapis.com/chromium-boringssl-docs/fips/boringssl-66005f41fbc3529ffe8d007708756720529da20d.tar.xz"],
+    ),'
++++ sed -i '18,22 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repository_locations.bzl
++++ [[ ! -z '' ]]
++++ '[' '' == true ']'
++++ FILE=bazel/repositories.bzl
++++ DELETE_START_PATTERN='def _boringssl():'
++++ DELETE_STOP_PATTERN=' )'
++++ START_OFFSET=0
++++ ADD_TEXT='#EXTERNAL OPENSSL
+def _openssl():
+    native.bind(
+        name = "ssl",
+        actual = "@openssl//:openssl-lib",
+)
+
+#EXTERNAL OPENSSL
+def _bssl_wrapper():
+    _repository_impl("bssl_wrapper")
+    native.bind(
+        name = "bssl_wrapper_lib",
+        actual = "@bssl_wrapper//:bssl_wrapper_lib",
+    )
+
+#EXTERNAL OPENSSL
+def _openssl_cbs():
+    _repository_impl("openssl_cbs")
+    native.bind(
+        name = "openssl_cbs_lib",
+        actual = "@openssl_cbs//:openssl_cbs_lib",
+    )'
++++ replace_text
+++++ grep -nr 'def _boringssl():' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ cut -d: -f1
++++ START=177
++++ START=177
++++ [[ ! -z  ) ]]
+++++ tail --lines=+177 /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ grep -nr ' )' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=12
++++ CUT=188
+++++ sed -n '177,188 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ CUT_TEXT='def _boringssl():
+    _repository_impl("boringssl")
+
+def _boringssl_fips():
+    location = REPOSITORY_LOCATIONS["boringssl_fips"]
+    genrule_repository(
+        name = "boringssl_fips",
+        urls = location["urls"],
+        sha256 = location["sha256"],
+        genrule_cmd_file = "@envoy//bazel/external:boringssl_fips.genrule_cmd",
+        build_file = "@envoy//bazel/external:boringssl_fips.BUILD",
+    )'
++++ sed -i '177,188 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ [[ ! -z #EXTERNAL OPENSSL
+def _openssl():
+    native.bind(
+        name = "ssl",
+        actual = "@openssl//:openssl-lib",
+)
+
+#EXTERNAL OPENSSL
+def _bssl_wrapper():
+    _repository_impl("bssl_wrapper")
+    native.bind(
+        name = "bssl_wrapper_lib",
+        actual = "@bssl_wrapper//:bssl_wrapper_lib",
+    )
+
+#EXTERNAL OPENSSL
+def _openssl_cbs():
+    _repository_impl("openssl_cbs")
+    native.bind(
+        name = "openssl_cbs_lib",
+        actual = "@openssl_cbs//:openssl_cbs_lib",
+    ) ]]
++++ ex -s -c '177i|#EXTERNAL OPENSSL
+def _openssl():
+    native.bind(
+        name = "ssl",
+        actual = "@openssl//:openssl-lib",
+)
+
+#EXTERNAL OPENSSL
+def _bssl_wrapper():
+    _repository_impl("bssl_wrapper")
+    native.bind(
+        name = "bssl_wrapper_lib",
+        actual = "@bssl_wrapper//:bssl_wrapper_lib",
+    )
+
+#EXTERNAL OPENSSL
+def _openssl_cbs():
+    _repository_impl("openssl_cbs")
+    native.bind(
+        name = "openssl_cbs_lib",
+        actual = "@openssl_cbs//:openssl_cbs_lib",
+    )' -c x /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ FILE=bazel/repositories.bzl
++++ DELETE_START_PATTERN='_boringssl()'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='
+    # EXTERNAL OPENSSL
+    _openssl()
+    _bssl_wrapper()
+    _openssl_cbs()
+
+'
++++ replace_text
+++++ grep -nr '_boringssl()' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ cut -d: -f1
++++ START=130
++++ START=130
++++ [[ ! -z '' ]]
++++ CUT=130
+++++ sed -n '130,130 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ CUT_TEXT='    _boringssl()'
++++ sed -i '130,130 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ [[ ! -z 
+    # EXTERNAL OPENSSL
+    _openssl()
+    _bssl_wrapper()
+    _openssl_cbs()
+
+ ]]
++++ ex -s -c '130i|
+    # EXTERNAL OPENSSL
+    _openssl()
+    _bssl_wrapper()
+    _openssl_cbs()
+
+' -c x /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ FILE=bazel/repositories.bzl
++++ DELETE_START_PATTERN='_boringssl_fips()'
++++ DELETE_STOP_PATTERN=')'
++++ START_OFFSET=0
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr '_boringssl_fips()' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ cut -d: -f1
++++ START=136
++++ START=136
++++ [[ ! -z ) ]]
+++++ tail --lines=+136 /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ grep -nr ')' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=1
++++ CUT=136
+++++ sed -n '136,136 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ CUT_TEXT='    _boringssl_fips()'
++++ sed -i '136,136 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ [[ ! -z '' ]]
++++ FILE=bazel/repositories.bzl
++++ DELETE_START_PATTERN=@envoy//bazel:boringssl
++++ DELETE_STOP_PATTERN=')'
++++ START_OFFSET=-2
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr @envoy//bazel:boringssl /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ cut -d: -f1
++++ START=138
++++ START=136
++++ [[ ! -z ) ]]
+++++ tail --lines=+136 /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
+++++ grep -nr ')' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=4
++++ CUT=139
+++++ sed -n '136,139 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ CUT_TEXT='    native.bind(
+        name = "ssl",
+        actual = "@envoy//bazel:boringssl",
+    )'
++++ sed -i '136,139 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/repositories.bzl
++++ [[ ! -z '' ]]
++++ OPENSSL_REPO='
+new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)'
++++ echo '
+new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)'
++++ sed -i 's|go_register_toolchains(go_version = GO_VERSION)|go_register_toolchains(go_version = "host")|g' /tmp/istio-proxy/bazel/base/external/envoy/WORKSPACE
++++ FILE=source/extensions/quic_listeners/quiche/platform/BUILD
++++ DELETE_START_PATTERN='"ssl"'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='        "ssl",
+        "openssl_cbs_lib",'
++++ replace_text
+++++ grep -nr '"ssl"' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/quic_listeners/quiche/platform/BUILD
+++++ cut -d: -f1
++++ START=147
++++ START=147
++++ [[ ! -z '' ]]
++++ CUT=147
+++++ sed -n '147,147 p' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/quic_listeners/quiche/platform/BUILD
++++ CUT_TEXT='        "ssl",'
++++ sed -i '147,147 d' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/quic_listeners/quiche/platform/BUILD
++++ [[ ! -z         "ssl",
+        "openssl_cbs_lib", ]]
++++ ex -s -c '147i|        "ssl",
+        "openssl_cbs_lib",' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/quic_listeners/quiche/platform/BUILD
++++ FILE=bazel/envoy_build_system.bzl
++++ DELETE_START_PATTERN='def envoy_select_boringssl'
++++ DELETE_STOP_PATTERN='})'
++++ START_OFFSET=0
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr 'def envoy_select_boringssl' /tmp/istio-proxy/bazel/base/external/envoy/bazel/envoy_build_system.bzl
+++++ cut -d: -f1
++++ START=687
++++ START=687
++++ [[ ! -z }) ]]
+++++ tail --lines=+687 /tmp/istio-proxy/bazel/base/external/envoy/bazel/envoy_build_system.bzl
+++++ grep -nr '})' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=5
++++ CUT=691
+++++ sed -n '687,691 p' /tmp/istio-proxy/bazel/base/external/envoy/bazel/envoy_build_system.bzl
++++ CUT_TEXT='def envoy_select_boringssl(if_fips, default = None):
+    return select({
+        "@envoy//bazel:boringssl_fips": if_fips,
+        "//conditions:default": default or [],
+    })'
++++ sed -i '687,691 d' /tmp/istio-proxy/bazel/base/external/envoy/bazel/envoy_build_system.bzl
++++ [[ ! -z '' ]]
++++ FILE=source/common/common/BUILD
++++ DELETE_START_PATTERN='"envoy_select_boringssl",'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr '"envoy_select_boringssl",' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
+++++ cut -d: -f1
++++ START=12
++++ START=12
++++ [[ ! -z '' ]]
++++ CUT=12
+++++ sed -n '12,12 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
++++ CUT_TEXT='    "envoy_select_boringssl",'
++++ sed -i '12,12 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
++++ [[ ! -z '' ]]
++++ FILE=source/common/common/BUILD
++++ DELETE_START_PATTERN='copts = envoy_select_boringssl('
++++ DELETE_STOP_PATTERN='),'
++++ START_OFFSET=0
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr 'copts = envoy_select_boringssl(' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
+++++ cut -d: -f1
++++ START=264
++++ START=264
++++ [[ ! -z ), ]]
+++++ tail --lines=+264 /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
+++++ grep -nr '),' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=4
++++ CUT=267
+++++ sed -n '264,267 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
++++ CUT_TEXT='    copts = envoy_select_boringssl(
+        ["-DENVOY_SSL_VERSION=\\\"BoringSSL-FIPS\\\""],
+        ["-DENVOY_SSL_VERSION=\\\"BoringSSL\\\""],
+    ),'
++++ sed -i '264,267 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/BUILD
++++ [[ ! -z '' ]]
++++ FILE=source/common/network/connection_impl.cc
++++ DELETE_START_PATTERN='close(ConnectionCloseType::NoFlush)'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='  if (ioHandle().fd() == -1 && delayed_close_timer_ == nullptr) {
+    close(ConnectionCloseType::NoFlush);
+  }'
++++ replace_text
+++++ grep -nr 'close(ConnectionCloseType::NoFlush)' /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
+++++ cut -d: -f1
++++ START=80
++++ START=80
++++ [[ ! -z '' ]]
++++ CUT=80
+++++ sed -n '80,80 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
++++ CUT_TEXT='  close(ConnectionCloseType::NoFlush);'
++++ sed -i '80,80 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
++++ [[ ! -z   if (ioHandle().fd() == -1 && delayed_close_timer_ == nullptr) {
+    close(ConnectionCloseType::NoFlush);
+  } ]]
++++ ex -s -c '80i|  if (ioHandle().fd() == -1 && delayed_close_timer_ == nullptr) {
+    close(ConnectionCloseType::NoFlush);
+  }' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
++++ FILE=source/common/network/connection_impl.cc
++++ DELETE_START_PATTERN='ConnectionImpl file event was unexpectedly reset'
++++ DELETE_STOP_PATTERN='file_event_->activate(Event::FileReadyType::Write)'
++++ START_OFFSET=0
++++ ADD_TEXT='      ASSERT(file_event_ != nullptr, "ConnectionImpl file event was unexpectedly reset");
+      if (file_event_ != nullptr) {
+        file_event_->activate(Event::FileReadyType::Write);
+      }'
++++ replace_text
+++++ grep -nr 'ConnectionImpl file event was unexpectedly reset' /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
+++++ cut -d: -f1
++++ START=391
++++ START=391
++++ [[ ! -z file_event_->activate(Event::FileReadyType::Write) ]]
+++++ tail --lines=+391 /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
+++++ grep -nr 'file_event_->activate(Event::FileReadyType::Write)' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=392
+++++ sed -n '391,392 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
++++ CUT_TEXT='      ASSERT(file_event_ != nullptr, "ConnectionImpl file event was unexpectedly reset");
+      file_event_->activate(Event::FileReadyType::Write);'
++++ sed -i '391,392 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
++++ [[ ! -z       ASSERT(file_event_ != nullptr, "ConnectionImpl file event was unexpectedly reset");
+      if (file_event_ != nullptr) {
+        file_event_->activate(Event::FileReadyType::Write);
+      } ]]
++++ ex -s -c '391i|      ASSERT(file_event_ != nullptr, "ConnectionImpl file event was unexpectedly reset");
+      if (file_event_ != nullptr) {
+        file_event_->activate(Event::FileReadyType::Write);
+      }' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/common/network/connection_impl.cc
++++ sed -i 's|ENVOY_SSL_VERSION|"OpenSSL_1_1_1-300a927e82a9d952889b8f4de1e0889d4e20e07d"|g' /tmp/istio-proxy/bazel/base/external/envoy/source/common/common/version.cc
++++ sed -i 's|#include "openssl/base.h"|#include "opensslcbs/cbs.h"|g' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/quic_listeners/quiche/platform/quic_cert_utils_impl.h
++++ sed -i 's|#include "openssl/bytestring.h"||g' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/quic_listeners/quiche/platform/quic_cert_utils_impl.cc
++++ sed -i 's|QuicPlatformTest, QuicStackTraceTest|QuicPlatformTest, DISABLED_QuicStackTraceTest|g' /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/quic_listeners/quiche/platform/quic_platform_test.cc
++++ sed -i 's|#include "openssl/bytestring.h"||g' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ sed -i 's|EVP_DigestVerifyInit(ctx.get()|EVP_DigestVerifyInit(ctx|g' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ sed -i 's|EVP_DigestVerify(ctx.get()|EVP_DigestVerify(ctx|g' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ FILE=source/common/crypto/utility.cc
++++ DELETE_START_PATTERN=EVP_parse_public_key
++++ DELETE_STOP_PATTERN=EVP_parse_public_key
++++ START_OFFSET=-1
++++ ADD_TEXT='  const uint8_t* data = reinterpret_cast<const uint8_t*>(key.data());
+  EVP_PKEY* pkey = d2i_PUBKEY(nullptr, &data, key.size());
+  return PublicKeyPtr(pkey);'
++++ replace_text
+++++ grep -nr EVP_parse_public_key /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
+++++ cut -d: -f1
++++ START=78
++++ START=77
++++ [[ ! -z EVP_parse_public_key ]]
+++++ tail --lines=+77 /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
+++++ grep -nr EVP_parse_public_key -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=78
+++++ sed -n '77,78 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ CUT_TEXT='  CBS cbs({key.data(), key.size()});
+  return PublicKeyPtr(EVP_parse_public_key(&cbs));'
++++ sed -i '77,78 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ [[ ! -z   const uint8_t* data = reinterpret_cast<const uint8_t*>(key.data());
+  EVP_PKEY* pkey = d2i_PUBKEY(nullptr, &data, key.size());
+  return PublicKeyPtr(pkey); ]]
++++ ex -s -c '77i|  const uint8_t* data = reinterpret_cast<const uint8_t*>(key.data());
+  EVP_PKEY* pkey = d2i_PUBKEY(nullptr, &data, key.size());
+  return PublicKeyPtr(pkey);' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ FILE=source/common/crypto/utility.cc
++++ DELETE_START_PATTERN=ScopedEVP_MD_CTX
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='  EVP_MD_CTX *ctx;
+  ctx = EVP_MD_CTX_new();'
++++ replace_text
+++++ grep -nr ScopedEVP_MD_CTX /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
+++++ cut -d: -f1
++++ START=50
++++ START=50
++++ [[ ! -z '' ]]
++++ CUT=50
+++++ sed -n '50,50 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ CUT_TEXT='  bssl::ScopedEVP_MD_CTX ctx;'
++++ sed -i '50,50 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ [[ ! -z   EVP_MD_CTX *ctx;
+  ctx = EVP_MD_CTX_new(); ]]
++++ ex -s -c '50i|  EVP_MD_CTX *ctx;
+  ctx = EVP_MD_CTX_new();' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.cc
++++ FILE=source/common/crypto/utility.h
++++ DELETE_START_PATTERN=openssl/evp.h
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='#include "openssl/evp.h"
+#include "opensslcbs/cbs.h"
+#include "bssl_wrapper/bssl_wrapper.h"'
++++ replace_text
+++++ grep -nr openssl/evp.h /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.h
+++++ cut -d: -f1
++++ START=9
++++ START=9
++++ [[ ! -z '' ]]
++++ CUT=9
+++++ sed -n '9,9 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.h
++++ CUT_TEXT='#include "openssl/evp.h"'
++++ sed -i '9,9 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.h
++++ [[ ! -z #include "openssl/evp.h"
+#include "opensslcbs/cbs.h"
+#include "bssl_wrapper/bssl_wrapper.h" ]]
++++ ex -s -c '9i|#include "openssl/evp.h"
+#include "opensslcbs/cbs.h"
+#include "bssl_wrapper/bssl_wrapper.h"' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/utility.h
++++ FILE=source/common/crypto/BUILD
++++ DELETE_START_PATTERN='"ssl"'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='        "ssl",
+        "openssl_cbs_lib",
+        "bssl_wrapper_lib"'
++++ replace_text
+++++ grep -nr '"ssl"' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/BUILD
+++++ cut -d: -f1
++++ START=16
++++ START=16
++++ [[ ! -z '' ]]
++++ CUT=16
+++++ sed -n '16,16 p' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/BUILD
++++ CUT_TEXT='        "ssl",'
++++ sed -i '16,16 d' /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/BUILD
++++ [[ ! -z         "ssl",
+        "openssl_cbs_lib",
+        "bssl_wrapper_lib" ]]
++++ ex -s -c '16i|        "ssl",
+        "openssl_cbs_lib",
+        "bssl_wrapper_lib"' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/common/crypto/BUILD
++++ sed -i 's|#include "openssl/bytestring.h"|#include "opensslcbs/cbs.h"|g' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/lua_filter.cc
++++ sed -i 's|#include "openssl/base64.h"||g' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/lua_filter.cc
++++ FILE=source/extensions/filters/http/lua/BUILD
++++ DELETE_START_PATTERN=lua_filter.h
++++ DELETE_STOP_PATTERN='deps = ['
++++ START_OFFSET=0
++++ ADD_TEXT='    hdrs = ["lua_filter.h"],
+    external_deps = [
+      "openssl_cbs_lib",
+    ],'
++++ replace_text
+++++ grep -nr lua_filter.h /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/BUILD
+++++ cut -d: -f1
++++ START=17
++++ START=17
++++ [[ ! -z deps = [ ]]
+++++ tail --lines=+17 /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/BUILD
+++++ grep -nr 'deps = [' -
+++++ cut -d: -f1
+++++ head -1
+grep: Invalid regular expression
++++ STOP=
++++ CUT=16
+++++ sed -n '17,16 p' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/BUILD
++++ CUT_TEXT='    hdrs = ["lua_filter.h"],'
++++ sed -i '17,16 d' /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/BUILD
++++ [[ ! -z     hdrs = ["lua_filter.h"],
+    external_deps = [
+      "openssl_cbs_lib",
+    ], ]]
++++ ex -s -c '17i|    hdrs = ["lua_filter.h"],
+    external_deps = [
+      "openssl_cbs_lib",
+    ],' -c x /tmp/istio-proxy/bazel/base/external/envoy/source/extensions/filters/http/lua/BUILD
++++ sed -i 's|#include "openssl/base64.h"||g' /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/filters/http/lua/lua_filter_test.cc
++++ sed -i 's|#include "openssl/bytestring.h"||g' /tmp/istio-proxy/bazel/base/external/envoy/test/extensions/filters/http/lua/lua_filter_test.cc
+++ popd
+++ rm -rf envoy-openssl
+++ git clone http://github.com/maistra/jwt-verify-lib-openssl -b maistra-1.0
+Cloning into 'jwt-verify-lib-openssl'...
+warning: redirecting to https://github.com/maistra/jwt-verify-lib-openssl/
+++ pushd jwt-verify-lib-openssl
+++ ./openssl.sh /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify OPENSSL
++++ SOURCE_DIR=/tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify
++++ TARGET=OPENSSL
++++ '[' '' == true ']'
++++ '[' OPENSSL == RESET ']'
++++ '[' OPENSSL == BORINGSSL ']'
++++ /usr/bin/cp -rf src/jwks.cc src/jwt.cc src/verify.cc src/verify_jwk_ec_test.cc src/verify_time_test.cc /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/src/
++++ /usr/bin/cp -rf jwt_verify_lib/jwks.h jwt_verify_lib/jwt.h /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/jwt_verify_lib/
++++ cp openssl.BUILD /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify
++++ FILE=repositories.bzl
++++ DELETE_START_PATTERN='actual = "@boringssl//:ssl",'
++++ DELETE_STOP_PATTERN=')'
++++ START_OFFSET=-3
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr 'actual = "@boringssl//:ssl",' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ cut -d: -f1
++++ START=17
++++ START=14
++++ [[ ! -z ) ]]
+++++ tail --lines=+14 /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ grep -nr ')' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=5
++++ CUT=18
++++ '[' 14 '!=' 0 ']'
+++++ sed -n '14,18 p' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ CUT_TEXT='    if bind:
+        native.bind(
+            name = "ssl",
+            actual = "@boringssl//:ssl",
+        )'
++++ sed -i '14,18 d' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ [[ ! -z '' ]]
++++ FILE=repositories.bzl
++++ DELETE_START_PATTERN='def boringssl_repositories(bind = True):'
++++ DELETE_STOP_PATTERN='),'
++++ START_OFFSET=0
++++ ADD_TEXT='def bsslwrapper_repositories(bind = True):
+    http_archive(
+        name = "bssl_wrapper",
+        strip_prefix = "bssl_wrapper-34df33add45e1a02927fcf79b0bdd5899b7e2e36",
+        url = "https://github.com/bdecoste/bssl_wrapper/archive/34df33add45e1a02927fcf79b0bdd5899b7e2e36.tar.gz",
+        sha256 = "d9e500e1a8849c81e690966422baf66016a7ff85d044c210ad85644f62827158",
+    )
+
+    if bind:
+        native.bind(
+            name = "bssl_wrapper_lib",
+            actual = "@bssl_wrapper//:bssl_wrapper_lib",
+        )
+        
+def opensslcbs_repositories(bind = True):
+    http_archive(
+        name = "openssl_cbs",
+        strip_prefix = "openssl-cbs-bc89423efd78098d411821b40aed7644748f841b",
+        url = "https://github.com/bdecoste/openssl-cbs/archive/bc89423efd78098d411821b40aed7644748f841b.tar.gz",
+        sha256 = "682138dcf3f747811f21448579b502f8c7c6168316a2fad408863b4692e4ccf9",
+    )
+
+    if bind:
+        native.bind(
+            name = "openssl_cbs_lib",
+            actual = "@openssl_cbs//:openssl_cbs_lib",
+        )
+'
++++ replace_text
+++++ grep -nr 'def boringssl_repositories(bind = True):' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ cut -d: -f1
++++ START=6
++++ START=6
++++ [[ ! -z ), ]]
+++++ tail --lines=+6 /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ grep -nr '),' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=
++++ CUT=5
++++ '[' 6 '!=' 0 ']'
+++++ sed -n '6,5 p' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ CUT_TEXT='def boringssl_repositories(bind = True):'
++++ sed -i '6,5 d' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ [[ ! -z def bsslwrapper_repositories(bind = True):
+    http_archive(
+        name = "bssl_wrapper",
+        strip_prefix = "bssl_wrapper-34df33add45e1a02927fcf79b0bdd5899b7e2e36",
+        url = "https://github.com/bdecoste/bssl_wrapper/archive/34df33add45e1a02927fcf79b0bdd5899b7e2e36.tar.gz",
+        sha256 = "d9e500e1a8849c81e690966422baf66016a7ff85d044c210ad85644f62827158",
+    )
+
+    if bind:
+        native.bind(
+            name = "bssl_wrapper_lib",
+            actual = "@bssl_wrapper//:bssl_wrapper_lib",
+        )
+        
+def opensslcbs_repositories(bind = True):
+    http_archive(
+        name = "openssl_cbs",
+        strip_prefix = "openssl-cbs-bc89423efd78098d411821b40aed7644748f841b",
+        url = "https://github.com/bdecoste/openssl-cbs/archive/bc89423efd78098d411821b40aed7644748f841b.tar.gz",
+        sha256 = "682138dcf3f747811f21448579b502f8c7c6168316a2fad408863b4692e4ccf9",
+    )
+
+    if bind:
+        native.bind(
+            name = "openssl_cbs_lib",
+            actual = "@openssl_cbs//:openssl_cbs_lib",
+        )
+ ]]
++++ ex -s -c '6i|def bsslwrapper_repositories(bind = True):
+    http_archive(
+        name = "bssl_wrapper",
+        strip_prefix = "bssl_wrapper-34df33add45e1a02927fcf79b0bdd5899b7e2e36",
+        url = "https://github.com/bdecoste/bssl_wrapper/archive/34df33add45e1a02927fcf79b0bdd5899b7e2e36.tar.gz",
+        sha256 = "d9e500e1a8849c81e690966422baf66016a7ff85d044c210ad85644f62827158",
+    )
+
+    if bind:
+        native.bind(
+            name = "bssl_wrapper_lib",
+            actual = "@bssl_wrapper//:bssl_wrapper_lib",
+        )
+        
+def opensslcbs_repositories(bind = True):
+    http_archive(
+        name = "openssl_cbs",
+        strip_prefix = "openssl-cbs-bc89423efd78098d411821b40aed7644748f841b",
+        url = "https://github.com/bdecoste/openssl-cbs/archive/bc89423efd78098d411821b40aed7644748f841b.tar.gz",
+        sha256 = "682138dcf3f747811f21448579b502f8c7c6168316a2fad408863b4692e4ccf9",
+    )
+
+    if bind:
+        native.bind(
+            name = "openssl_cbs_lib",
+            actual = "@openssl_cbs//:openssl_cbs_lib",
+        )
+' -c x /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ FILE=repositories.bzl
++++ DELETE_START_PATTERN='BORINGSSL_COMMIT ='
++++ DELETE_STOP_PATTERN='BORINGSSL_SHA256 ='
++++ START_OFFSET=0
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr 'BORINGSSL_COMMIT =' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ cut -d: -f1
++++ START=3
++++ START=3
++++ [[ ! -z BORINGSSL_SHA256 = ]]
+++++ tail --lines=+3 /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ grep -nr 'BORINGSSL_SHA256 =' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=4
++++ '[' 3 '!=' 0 ']'
+++++ sed -n '3,4 p' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ CUT_TEXT='BORINGSSL_COMMIT = "9df0c47bc034d60d73d216cd0e090707b3fbea58"  # same as Envoy
+BORINGSSL_SHA256 = "86d0614bb9e6cb4e6444b83bb1f031755eff4bbe52cd8f4cd5720bb84a7ea9f5"'
++++ sed -i '3,4 d' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ [[ ! -z '' ]]
++++ FILE=repositories.bzl
++++ DELETE_START_PATTERN='name = "boringssl",'
++++ DELETE_STOP_PATTERN=')'
++++ START_OFFSET=-1
++++ ADD_TEXT=
++++ replace_text
+++++ grep -nr 'name = "boringssl",' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ cut -d: -f1
++++ START=32
++++ START=31
++++ [[ ! -z ) ]]
+++++ tail --lines=+31 /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
+++++ grep -nr ')' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=6
++++ CUT=36
++++ '[' 31 '!=' 0 ']'
+++++ sed -n '31,36 p' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ CUT_TEXT='    http_archive(
+        name = "boringssl",
+        strip_prefix = "boringssl-" + BORINGSSL_COMMIT,
+        url = "https://github.com/google/boringssl/archive/" + BORINGSSL_COMMIT + ".tar.gz",
+        sha256 = BORINGSSL_SHA256,
+    )'
++++ sed -i '31,36 d' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/repositories.bzl
++++ [[ ! -z '' ]]
++++ FILE=BUILD
++++ DELETE_START_PATTERN='"//external:protobuf",'
++++ DELETE_STOP_PATTERN='"//external:ssl",'
++++ START_OFFSET=0
++++ ADD_TEXT='        "//external:protobuf",
+        "//external:bssl_wrapper_lib",
+        "//external:openssl_cbs_lib",
+        "@openssl//:openssl-lib",'
++++ replace_text
+++++ grep -nr '"//external:protobuf",' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/BUILD
+++++ cut -d: -f1
++++ START=27
++++ START=27
++++ [[ ! -z "//external:ssl", ]]
+++++ tail --lines=+27 /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/BUILD
+++++ grep -nr '"//external:ssl",' -
+++++ cut -d: -f1
+++++ head -1
++++ STOP=2
++++ CUT=28
++++ '[' 27 '!=' 0 ']'
+++++ sed -n '27,28 p' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/BUILD
++++ CUT_TEXT='        "//external:protobuf",
+        "//external:ssl",'
++++ sed -i '27,28 d' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/BUILD
++++ [[ ! -z         "//external:protobuf",
+        "//external:bssl_wrapper_lib",
+        "//external:openssl_cbs_lib",
+        "@openssl//:openssl-lib", ]]
++++ ex -s -c '27i|        "//external:protobuf",
+        "//external:bssl_wrapper_lib",
+        "//external:openssl_cbs_lib",
+        "@openssl//:openssl-lib",' -c x /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/BUILD
++++ FILE=WORKSPACE
++++ DELETE_START_PATTERN='"boringssl_repositories",'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='    "bsslwrapper_repositories",
+    "opensslcbs_repositories",'
++++ replace_text
+++++ grep -nr '"boringssl_repositories",' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/WORKSPACE
+++++ cut -d: -f1
++++ START=
++++ START=0
++++ [[ ! -z '' ]]
++++ CUT=0
++++ '[' 0 '!=' 0 ']'
++++ FILE=WORKSPACE
++++ DELETE_START_PATTERN='boringssl_repositories()'
++++ DELETE_STOP_PATTERN=
++++ START_OFFSET=0
++++ ADD_TEXT='bsslwrapper_repositories()
+opensslcbs_repositories()'
++++ replace_text
+++++ grep -nr 'boringssl_repositories()' /tmp/istio-proxy/bazel/base/external/com_github_google_jwt_verify/WORKSPACE
+++++ cut -d: -f1
++++ START=
++++ START=0
++++ [[ ! -z '' ]]
++++ CUT=0
++++ '[' 0 '!=' 0 ']'
++++ OPENSSL_REPO='
+new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)'
++++ echo '
+new_local_repository(
+    name = "openssl",
+    path = "/usr/lib64/",
+    build_file = "openssl.BUILD"
+)'
+++ popd
+++ rm -rf jwt-verify-lib-openssl
+++ popd
+++ rm -rf /tmp/istio-proxy/bazel/base/external/boringssl /tmp/istio-proxy/bazel/base/external/boringssl_fips /tmp/istio-proxy/bazel/base/external/@boringssl_fips.marker /tmp/istio-proxy/bazel/base/external/@boringssl.marker
+++ pushd /tmp/istio-proxy/proxy
+++ bazel --output_base=/tmp/istio-proxy/bazel/base --output_user_root=/tmp/istio-proxy/bazel/root fetch //...
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/tmp/istio-proxy/proxy/tools/bazel.rc
+INFO: Invocation ID: 15f00173-4877-4276-a067-2fdef0ba4865
+Loading: 0 packages loaded
+DEBUG: /tmp/istio-proxy/bazel/base/external/bazel_tools/tools/build_defs/pkg/pkg.bzl:251:17: @//src/envoy:envoy_tar: you provided a non dictionary to the pkg_tar `files` attribute. This attribute was renamed to `srcs`. Consider renaming it in your BUILD file.
+DEBUG: /tmp/istio-proxy/bazel/base/external/bazel_tools/tools/build_defs/pkg/pkg.bzl:251:17: @//tools/deb:envoy-bin: you provided a non dictionary to the pkg_tar `files` attribute. This attribute was renamed to `srcs`. Consider renaming it in your BUILD file.
+DEBUG: /tmp/istio-proxy/bazel/base/external/bazel_tools/tools/build_defs/pkg/pkg.bzl:251:17: @//tools/deb:istio-conf: you provided a non dictionary to the pkg_tar `files` attribute. This attribute was renamed to `srcs`. Consider renaming it in your BUILD file.
+Loading: 22 packages loaded
+    currently loading: @envoy//include/envoy/event ... (2 packages)
+Loading: 219 packages loaded
+Loading: 219 packages loaded
+Loading: 219 packages loaded
+++ popd
+++ prune
+++ pushd /tmp/istio-proxy
+++ '[' '!' false == true ']'
+++ find . -name '.git*'
+++ xargs -r rm -rf
+++ find . -name '*.log'
+++ xargs -r rm -rf
+++ popd
+++ pushd /tmp/istio-proxy/bazel
+++ rm -rf base/execroot
+++ rm -rf root/cache
+++ popd
+++ set_python_rules_date
+++ pushd /tmp/istio-proxy/bazel
+++ find . -type f -name rules
+++ xargs touch -m -t 210012120101
+++ popd
+++ add_BUILD_SCM_REVISIONS
+++ pushd /tmp/istio-proxy/proxy
+++ sed -i '1i BUILD_SCM_REVISION=1564283688\n' tools/bazel_get_workspace_status
+++ popd
+++ strip_latomic
+++ '[' true = true ']'
+++ pushd /tmp/istio-proxy/bazel/base/external
+++ find . -type f -name configure.ac -exec sed -i s/-latomic//g '{}' +
+++ find . -type f -name CMakeLists.txt -exec sed -i s/-latomic//g '{}' +
+++ find . -type f -name configure -exec sed -i s/-latomic//g '{}' +
+++ find . -type f -name CROSSTOOL -exec sed -i s/-latomic//g '{}' +
+++ find . -type f -name envoy_build_system.bzl -exec sed -i s/-latomic//g '{}' +
+++ popd
+++ correct_links
+++ pushd /tmp/istio-proxy/bazel
+++ find . -lname '/*' -exec ksh -c '
+      CACHE_WORKING_DIR=$(pwd)
+      for link; do
+        target=$(readlink "$link")
+        link=${link#./}
+        root=${link//+([!\/])/..}; root=${root#/}; root=${root%..}
+        rm "$link"
+        target="$root${target#/}"
+        target=$(echo $target | sed "s|../../..${CACHE_WORKING_DIR}/base|../../../base|")
+        target=$(echo $target | sed "s|../..${CACHE_WORKING_DIR}/base|../../base|")
+        target=$(echo $target | sed "s|../../..${CACHE_WORKING_DIR}/root|../../../root|")
+        target=$(echo $target | sed "s|..${CACHE_WORKING_DIR}/root|../root|")
+        target=$(echo $target | sed "s|../../../usr/lib/jvm|/usr/lib/jvm|")
+        ln -s "$target" "$link"
+      done
+    ' _ '{}' +
+++ rm -rf base/external/envoy_deps/thirdparty base/external/envoy_deps/thirdparty_build
+++ popd
+++ add_annobin_flags
+++ pushd /tmp/istio-proxy/proxy
+++ BUILD_OPTIONS='build --cxxopt -fPIE
+build --cxxopt -fPIC
+build --cxxopt -fcf-protection=full
+build --cxxopt -fstack-clash-protection
+build --cxxopt -fplugin=annobin
+build --cxxopt -fstack-protector-all
+build --cxxopt -fstack-protector-strong
+build --cxxopt -O2
+build --cxxopt -fexceptions
+build --cxxopt -D_GLIBCXX_ASSERTIONS
+'
+++ echo 'build --cxxopt -fPIE
+build --cxxopt -fPIC
+build --cxxopt -fcf-protection=full
+build --cxxopt -fstack-clash-protection
+build --cxxopt -fplugin=annobin
+build --cxxopt -fstack-protector-all
+build --cxxopt -fstack-protector-strong
+build --cxxopt -O2
+build --cxxopt -fexceptions
+build --cxxopt -D_GLIBCXX_ASSERTIONS
+'
+++ popd
+++ pushd /tmp/istio-proxy/bazel/base/external/local_config_cc
+++ FILE=CROSSTOOL
+++ DELETE_START_PATTERN='cxx_flag: "-std=c++0x"'
+++ DELETE_STOP_PATTERN=
+++ START_OFFSET=0
+++ ADD_TEXT='  cxx_flag: "-std=c++0x"
+  cxx_flag: "-fPIC"
+  cxx_flag: "-fPIE"
+  cxx_flag: "-fcf-protection=full"
+  cxx_flag: "-fplugin=annobin"
+  cxx_flag: "-O2"
+  cxx_flag: "-fstack-protector-strong"
+  cxx_flag: "-fstack-protector-all"
+  cxx_flag: "-fexceptions"
+  cxx_flag: "-D_GLIBCXX_ASSERTIONS"
+'
+++ replace_text
++++ grep -nr 'cxx_flag: "-std=c++0x"' CROSSTOOL
++++ cut -d: -f1
+++ START=69
+++ START=69
+++ [[ ! -z '' ]]
+++ CUT=69
++++ sed -n '69,69 p' CROSSTOOL
+++ CUT_TEXT='  cxx_flag: "-std=c++0x"'
+++ sed -i '69,69 d' CROSSTOOL
+++ [[ ! -z   cxx_flag: "-std=c++0x"
+  cxx_flag: "-fPIC"
+  cxx_flag: "-fPIE"
+  cxx_flag: "-fcf-protection=full"
+  cxx_flag: "-fplugin=annobin"
+  cxx_flag: "-O2"
+  cxx_flag: "-fstack-protector-strong"
+  cxx_flag: "-fstack-protector-all"
+  cxx_flag: "-fexceptions"
+  cxx_flag: "-D_GLIBCXX_ASSERTIONS"
+ ]]
+++ ex -s -c '69i|  cxx_flag: "-std=c++0x"
+  cxx_flag: "-fPIC"
+  cxx_flag: "-fPIE"
+  cxx_flag: "-fcf-protection=full"
+  cxx_flag: "-fplugin=annobin"
+  cxx_flag: "-O2"
+  cxx_flag: "-fstack-protector-strong"
+  cxx_flag: "-fstack-protector-all"
+  cxx_flag: "-fexceptions"
+  cxx_flag: "-D_GLIBCXX_ASSERTIONS"
+' -c x CROSSTOOL
+++ FILE=CROSSTOOL
+++ DELETE_START_PATTERN='compiler_flag: "-Wall"'
+++ DELETE_STOP_PATTERN=
+++ START_OFFSET=0
+++ ADD_TEXT='  compiler_flag: "-Wall"
+  compiler_flag: "-fPIC"
+  compiler_flag: "-fPIE"
+  compiler_flag: "-fcf-protection=full"
+  compiler_flag: "-fplugin=annobin"
+  compiler_flag: "-O2"
+  compiler_flag: "-fstack-protector-strong"
+  compiler_flag: "-fstack-protector-all"
+  compiler_flag: "-fexceptions"
+  compiler_flag: "-D_GLIBCXX_ASSERTIONS"
+'
+++ replace_text
++++ grep -nr 'compiler_flag: "-Wall"' CROSSTOOL
++++ cut -d: -f1
+++ START=100
+++ START=100
+++ [[ ! -z '' ]]
+++ CUT=100
++++ sed -n '100,100 p' CROSSTOOL
+++ CUT_TEXT='  compiler_flag: "-Wall"'
+++ sed -i '100,100 d' CROSSTOOL
+++ [[ ! -z   compiler_flag: "-Wall"
+  compiler_flag: "-fPIC"
+  compiler_flag: "-fPIE"
+  compiler_flag: "-fcf-protection=full"
+  compiler_flag: "-fplugin=annobin"
+  compiler_flag: "-O2"
+  compiler_flag: "-fstack-protector-strong"
+  compiler_flag: "-fstack-protector-all"
+  compiler_flag: "-fexceptions"
+  compiler_flag: "-D_GLIBCXX_ASSERTIONS"
+ ]]
+++ ex -s -c '100i|  compiler_flag: "-Wall"
+  compiler_flag: "-fPIC"
+  compiler_flag: "-fPIE"
+  compiler_flag: "-fcf-protection=full"
+  compiler_flag: "-fplugin=annobin"
+  compiler_flag: "-O2"
+  compiler_flag: "-fstack-protector-strong"
+  compiler_flag: "-fstack-protector-all"
+  compiler_flag: "-fexceptions"
+  compiler_flag: "-D_GLIBCXX_ASSERTIONS"
+' -c x CROSSTOOL
+++ FILE=CROSSTOOL
+++ DELETE_START_PATTERN='compiler_flag: "-D_FORTIFY_SOURCE=1"'
+++ DELETE_STOP_PATTERN=
+++ START_OFFSET=0
+++ ADD_TEXT='    compiler_flag: "-D_FORTIFY_SOURCE=2"
+    compiler_flag: "-fPIC"
+    compiler_flag: "-fPIE"
+    compiler_flag: "-fplugin=annobin"
+    compiler_flag: "-fcf-protection=full"
+    compiler_flag: "-fstack-clash-protection"
+    compiler_flag: "-fplugin=annobin"
+    compiler_flag: "-fstack-protector-all"
+    compiler_flag: "-fstack-protector-strong"
+    compiler_flag: "-fexceptions"
+    compiler_flag: "-D_GLIBCXX_ASSERTIONS"
+'
+++ replace_text
++++ grep -nr 'compiler_flag: "-D_FORTIFY_SOURCE=1"' CROSSTOOL
++++ cut -d: -f1
+++ START=132
+++ START=132
+++ [[ ! -z '' ]]
+++ CUT=132
++++ sed -n '132,132 p' CROSSTOOL
+++ CUT_TEXT='    compiler_flag: "-D_FORTIFY_SOURCE=1"'
+++ sed -i '132,132 d' CROSSTOOL
+++ [[ ! -z     compiler_flag: "-D_FORTIFY_SOURCE=2"
+    compiler_flag: "-fPIC"
+    compiler_flag: "-fPIE"
+    compiler_flag: "-fplugin=annobin"
+    compiler_flag: "-fcf-protection=full"
+    compiler_flag: "-fstack-clash-protection"
+    compiler_flag: "-fplugin=annobin"
+    compiler_flag: "-fstack-protector-all"
+    compiler_flag: "-fstack-protector-strong"
+    compiler_flag: "-fexceptions"
+    compiler_flag: "-D_GLIBCXX_ASSERTIONS"
+ ]]
+++ ex -s -c '132i|    compiler_flag: "-D_FORTIFY_SOURCE=2"
+    compiler_flag: "-fPIC"
+    compiler_flag: "-fPIE"
+    compiler_flag: "-fplugin=annobin"
+    compiler_flag: "-fcf-protection=full"
+    compiler_flag: "-fstack-clash-protection"
+    compiler_flag: "-fplugin=annobin"
+    compiler_flag: "-fstack-protector-all"
+    compiler_flag: "-fstack-protector-strong"
+    compiler_flag: "-fexceptions"
+    compiler_flag: "-D_GLIBCXX_ASSERTIONS"
+' -c x CROSSTOOL
+++ popd
+++ pushd /tmp/istio-proxy/bazel/base/external/com_github_luajit_luajit
+++ sed -i 's|CCOPT= -O2 -fomit-frame-pointer|CCOPT= -O2 -fomit-frame-pointer -fPIC -fPIE -fcf-protection=full -fplugin=annobin -fstack-protector-strong -fstack-protector-all|g' src/Makefile
+++ popd
+++ create_tarball
+++ '[' true = true ']'
+++ pushd /tmp
+++ rm -rf proxy-full.tar.xz
+++ tar cf proxy-full.tar istio-proxy --atime-preserve
+++ xz proxy-full.tar
+++ popd
+rm: cannot remove '*.src.rpm': No such file or directory
+Failed to get ns from Git url or pushurl
+Failed to get repository name from Git url or pushurl
+Could not execute srpm: Server returned status code 404
+
+Error: File downloaded not found
