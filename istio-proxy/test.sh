@@ -47,7 +47,7 @@ function run_tests() {
         fi
 
         set_python_rules_date
-        bazel --output_base=${RPM_BUILD_DIR}/${PROXY_NAME}-${PROXY_GIT_BRANCH}/${PROXY_NAME}/bazel/base --output_user_root=${RPM_BUILD_DIR}/${PROXY_NAME}-${PROXY_GIT_BRANCH}/${PROXY_NAME}/bazel/root test --test_env=ENVOY_IP_TEST_VERSIONS=v4only --test_output=all --config=${BUILD_CONFIG} --host_javabase=@local_jdk//:jdk "//..."
+        bazel --output_base=${RPM_BUILD_DIR}/${PROXY_NAME}-${PROXY_GIT_BRANCH}/${PROXY_NAME}/bazel/base --output_user_root=${RPM_BUILD_DIR}/${PROXY_NAME}-${PROXY_GIT_BRANCH}/${PROXY_NAME}/bazel/root test --test_env=ENVOY_IP_TEST_VERSIONS=v4only --test_env=HEAPCHECK=minimal --test_output=all --config=${BUILD_CONFIG} --host_javabase=@local_jdk//:jdk "//..."
 
         if [ "${TEST_ENVOY}" == "true" ]; then
           set_python_rules_date
